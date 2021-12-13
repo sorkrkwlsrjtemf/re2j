@@ -6,6 +6,7 @@
  */
 package com.google.re2j;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
@@ -29,15 +30,31 @@ public class UnicodeTest {
     }
   }
 
-  // TODO(adonovan): tests for:
-  //
-  // boolean isUpper(int r);
+  @Test
+  public void uppertest() {
+    assertEquals(true, Unicode.isUpper('A'));
+  }
+
+  @Test
+  public void printtest() {
+    assertEquals(true, Unicode.isPrint(' '));
+    assertEquals(true, Unicode.isPrint(0x20));
+  }
+
+  @Test
+  public void simplefold() {
+    assertEquals('A', Unicode.simpleFold('a'));
+    assertEquals('a', Unicode.simpleFold('A'));
+    assertEquals('1', Unicode.simpleFold('1'));
+  }
+
+
+
   // boolean isLower(int r);
   // boolean isTitle(int r);
-  // boolean isPrint(int r);
   // int to(int _case, int r, int[][] caseRange);
   // int toUpper(int r);
   // int toLower(int r);
-  // int simpleFold(int r);
+
 
 }
